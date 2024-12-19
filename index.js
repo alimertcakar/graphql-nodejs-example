@@ -4,8 +4,11 @@ const schema = fs.readFileSync(__dirname.concat("/schema.graphql"), "utf8");
 const typeDefs = gql(schema);
 const resolvers = {
   Query: {
+    thread: (_, params) => {
+      console.log(params, "params");
+      return { name: params.id + "params" };
+    },
     threads: () => {},
-    thread: () => {},
   },
   Mutation: {
     createThread: () => {},
